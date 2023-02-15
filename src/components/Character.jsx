@@ -40,17 +40,19 @@ function Character() {
 
  const filterCharacters = useMemo(()=> 
   characters.filter((char) => {
-    return char.name.toLowerCase().includes()
-  })
- )
+    return char.name.toLowerCase().includes(search.toLowerCase())
+  }), [characters, search]);
+
     return (
         <div>
           {favorites.favorites.map((favorite)=>(
  <li key={favorite.id}>{favorite.name}</li>
           ))}
+          
           <input type="text" value={search} onChange={handleSearch} />
-          {characters.map((character)=>{
-            return(
+          {filterCharacters.map((character)=>{
+          
+           return(
                 <div key={character.id}>
                <h2>{character.name}</h2>
                <img src={character.image} alt="" />
